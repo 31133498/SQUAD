@@ -12,24 +12,46 @@
     <input type="text" id="searchBar" placeholder="Search hostels..." onkeyup="searchHostels()"> 
    </nav> 
   </header> <!-- Hostel Listings --> 
-  <section class="hostel-container"> 
-   <div class="hostel" data-name="Greenwood Hostel"> 
-    <img src="https://i.ibb.co/BK6Fm5cM/file-QSEQg-DQLHWc-BXG9-MPe-ENUu.png" alt="Greenwood Hostel"> 
-    <div class="info"> 
-     <h3>Greenwood Hostel</h3> 
-     <p>₦150,000 / year</p> 
-     <p>Available Slots: 4</p> <button onclick="selectHostel('Greenwood Hostel', '₦150,000')">Book Now</button> 
-    </div> 
-   </div> 
-   <div class="hostel" data-name="Campus View Hostel"> 
-    <img src="https://i.ibb.co/BK6Fm5cM/file-QSEQg-DQLHWc-BXG9-MPe-ENUu.png" alt="Campus View Hostel"> 
-    <div class="info"> 
-     <h3>Campus View Hostel</h3> 
-     <p>₦180,000 / year</p> 
-     <p>Available Slots: 2</p> <button onclick="selectHostel('Campus View Hostel', '₦180,000')">Book Now</button> 
-    </div> 
-   </div> 
-  </section> <!-- Booking Form --> 
+  
+ <!-- Hostel Listings -->
+    <section class="hostel-container">
+        <div class="hostel" data-name="Greenwood Hostel">
+            <img src="https://i.ibb.co/BK6Fm5cM/file-QSEQg-DQLHWc-BXG9-MPe-ENUu.png" alt="Greenwood Hostel">
+            <div class="info">
+                <h3>Greenwood Hostel</h3>
+                <div class="star-rating">
+                    <span class="active">★</span>
+                    <span class="active">★</span>
+                    <span class="active">★</span>
+                    <span class="active">★</span>
+                    <span class="inactive">★</span>
+                </div>
+                <p>₦150,000 / year</p>
+                <p>Available Slots: 4</p>
+                <button onclick="selectHostel('Greenwood Hostel', '₦150,000')">Book Now</button>
+            </div>
+        </div>
+
+        <div class="hostel" data-name="Campus View Hostel">
+            <img src="https://i.ibb.co/BK6Fm5cM/file-QSEQg-DQLHWc-BXG9-MPe-ENUu.png" alt="Campus View Hostel">
+            <div class="info">
+                <h3>Campus View Hostel</h3>
+                <div class="star-rating">
+                    <span class="active">★</span>
+                    <span class="active">★</span>
+                    <span class="active">★</span>
+                    <span class="inactive">★</span>
+                    <span class="inactive">★</span>
+                </div>
+                <p>₦180,000 / year</p>
+                <p>Available Slots: 2</p>
+                <button onclick="selectHostel('Campus View Hostel', '₦180,000')">Book Now</button>
+            </div>
+        </div>
+    </section>
+
+  
+  <!-- Booking Form --> 
   <section class="booking-form"> 
    <h2>Book Your Hostel</h2> 
    <form> 
@@ -333,6 +355,30 @@ input {
         font-size: 1em;
     }
 }
+
+ /* Star Rating Styles */
+        .star-rating {
+            display: flex;
+            justify-content: center;
+            margin: 10px 0;
+        }
+
+        .star-rating span {
+            font-size: 24px;
+            color: #ffd700;
+            cursor: pointer;
+        }
+
+        .star-rating span.active {
+            color: #ffd700;
+        }
+
+        .star-rating span.inactive {
+            color: #ccc;
+        }   
+   
+
+   
 </style> 
  </body>
 </html>
