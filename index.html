@@ -1,0 +1,338 @@
+<!doctype html>
+<html lang="en"> 
+ <head> 
+  <meta charset="UTF-8"> 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+  <title>Hostel Finder</title> 
+ </head> 
+ <body> <!-- Header with Search --> 
+  <header> 
+   <h1>Find Your Perfect Hostel</h1> 
+   <nav> 
+    <input type="text" id="searchBar" placeholder="Search hostels..." onkeyup="searchHostels()"> 
+   </nav> 
+  </header> <!-- Hostel Listings --> 
+  <section class="hostel-container"> 
+   <div class="hostel" data-name="Greenwood Hostel"> 
+    <img src="https://i.ibb.co/BK6Fm5cM/file-QSEQg-DQLHWc-BXG9-MPe-ENUu.png" alt="Greenwood Hostel"> 
+    <div class="info"> 
+     <h3>Greenwood Hostel</h3> 
+     <p>₦150,000 / year</p> 
+     <p>Available Slots: 4</p> <button onclick="selectHostel('Greenwood Hostel', '₦150,000')">Book Now</button> 
+    </div> 
+   </div> 
+   <div class="hostel" data-name="Campus View Hostel"> 
+    <img src="https://i.ibb.co/BK6Fm5cM/file-QSEQg-DQLHWc-BXG9-MPe-ENUu.png" alt="Campus View Hostel"> 
+    <div class="info"> 
+     <h3>Campus View Hostel</h3> 
+     <p>₦180,000 / year</p> 
+     <p>Available Slots: 2</p> <button onclick="selectHostel('Campus View Hostel', '₦180,000')">Book Now</button> 
+    </div> 
+   </div> 
+  </section> <!-- Booking Form --> 
+  <section class="booking-form"> 
+   <h2>Book Your Hostel</h2> 
+   <form> 
+    <input type="text" id="selectedHostel" placeholder="Selected Hostel" readonly> 
+    <input type="text" placeholder="Your Name" required> 
+    <input type="email" placeholder="Your Email" required> 
+    <input type="tel" placeholder="Phone Number" required> <button type="submit">Proceed to Payment</button> 
+   </form> 
+  </section> 
+  <script>
+        function selectHostel(name, price) {
+            document.getElementById('selectedHostel').value = name + " - " + price;
+            window.scrollTo({ top: document.querySelector('.booking-form').offsetTop, behavior: 'smooth' });
+        }
+
+        function searchHostels() {
+            let input = document.getElementById("searchBar").value.toLowerCase();
+            let hostels = document.querySelectorAll(".hostel");
+
+            hostels.forEach(hostel => {
+                let name = hostel.getAttribute("data-name").toLowerCase();
+                hostel.style.display = name.includes(input) ? "block" : "none";
+            });
+        }
+    </script> 
+  <style>
+    @media (max-width: 500px){
+           body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f8f8f8;
+    text-align: center;
+}
+
+header {
+    background: white;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+nav input {
+    width: 80%;
+    max-width: 400px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.hostel-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
+
+.hostel {
+    background: white;
+    margin: 15px;
+    width: 300px;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.hostel:hover {
+    transform: scale(1.05);
+}
+
+.hostel img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.info {
+    padding: 15px;
+}
+
+button {
+    padding: 10px;
+    background: #ff5a5f;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.booking-form {
+    background: white;
+    padding: 20px;
+    width: 90%;
+    max-width: 400px;
+    margin: 30px auto;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+input {
+    width: 80%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+}
+@media (min-width: 600px) and (max-width: 1000px) {
+    .hostel {
+        display: flex;
+        flex-direction: row;
+        width: 90%;
+        max-width: 800px;
+        height: 250px;
+        margin: 20px auto;
+    }
+
+    .hostel img {
+        width: 50%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .info {
+        width: 50%;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    .info button {
+        background: #ff5a5f;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        margin-top: 10px;
+        width: 100%;
+        padding: 15px;
+        font-size: 1.1em;
+    }
+
+    /* Keep other existing tablet styles */
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f8f8f8;
+        text-align: center;
+    }
+    
+    header {
+        background: white;
+        padding: 20px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+    }
+    
+    nav input {
+        width: 80%;
+        max-width: 600px;
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+    }
+    
+    .hostel-container {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        margin-top: 20px;
+    }
+    
+    .hostel:hover {
+        transform: scale(1.03);
+    }
+    
+    .booking-form {
+        background: white;
+        padding: 20px;
+        width: 90%;
+        max-width: 400px;
+        margin: 30px auto;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        border-radius: 10px;
+    }
+    
+    input {
+        width: 80%;
+        padding: 10px;
+        margin: 10px 0;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+    }
+}
+@media (min-width: 1027px) and (max-width: 2000px){
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f8f8f8;
+        text-align: center;
+    }
+
+    header {
+        background: white;
+        padding: 20px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+    }
+
+    nav input {
+        width: 50%;
+        max-width: 600px;
+        padding: 12px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        font-size: 1.1em;
+    }
+
+    .hostel-container {
+        display: flex;
+        flex-direction: column; /* Stack hostel blocks vertically */
+        align-items: center; /* Center hostel blocks horizontally */
+        margin-top: 30px;
+        gap: 20px;
+    }
+
+    .hostel {
+        background: white;
+        width: 80%; /* Wider hostel blocks for better readability */
+        max-width: 1300px; /* Limit maximum width */
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease;
+        display: flex;
+        flex-direction: row; /* Image on left, text on right */
+        height: 450px;
+        gap: 50px;
+    }
+     .hostel-container .hostel ~ .hostel {
+        margin-top: 50px; /* Smaller spacing for hostel blocks after the first */
+    }
+
+    .hostel:hover {
+        transform: scale(1.03);
+    }
+
+    .hostel img {
+        width: 50%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .info {
+        width: 50%;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    .info button {
+        width: 100%;
+        padding: 15px;
+        font-size: 1.1em;
+        background: #ff5a5f;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        margin-top: 10px;
+    }
+
+    .booking-form {
+        background: white;
+        padding: 30px;
+        width: 50%;
+        max-width: 600px;
+        margin: 40px auto;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        border-radius: 10px;
+    }
+
+    input {
+        width: 80%;
+        padding: 12px;
+        margin: 10px 0;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        font-size: 1em;
+    }
+}
+</style> 
+ </body>
+</html>
