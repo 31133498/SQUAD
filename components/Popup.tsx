@@ -10,11 +10,13 @@ export default function Popup() {
         price: "",
         fullName: "",
         contactInfo: "",
+        description: "",
         file: null,
     });
 
-    const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        const { name, value, files } = event.target;
+    const handleChange = (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+        const { name, value } = event.target as HTMLInputElement | HTMLTextAreaElement;
+        const files = (event.target as HTMLInputElement).files;
         setFormValues((prevValues) => ({
             ...prevValues,
             [name]: files ? files[0] : value,
@@ -23,7 +25,9 @@ export default function Popup() {
 
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
-        const isValid = Object.values(formValues).every(value => value !== "" && value !== null);
+        const isValid = Object.values(formValues).every(
+            (value) => value !== "" && value !== null
+        );
 
         if (!isValid) {
             alert("Please fill in all fields.");
@@ -46,7 +50,7 @@ export default function Popup() {
             {open && (
                 <div className="fixed inset-0 flex items-center justify-center bg-black/70 p-4">
                     {/* Modal Content */}
-                    <div className="bg-white p-6 rounded-lg shadow-lg w-[500px] relative">
+                    <div className="bg-white p-6 rounded-lg shadow-lg w-[500px] max-h-[90vh] overflow-y-auto relative">
                         {/* Close Button */}
                         <button
                             onClick={() => setOpen(false)}
@@ -98,6 +102,14 @@ export default function Popup() {
                                 className="w-full p-2 border rounded-md border-[#ddd]"
                                 required
                             />
+                        <textarea
+                                name="description"
+                                value={formValues.description || ""}
+                                onChange={handleChange}
+                                placeholder="Description"
+                                className="w-full p-2 border rounded-md border-[#ddd] resize-none"
+                                required
+                        />
                             <input
                                 type="file"
                                 name="file"

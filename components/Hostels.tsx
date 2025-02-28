@@ -23,7 +23,7 @@ const Hostels = ({ filteredItems, loading }: filteredProps) => {
           ({ image, title, rating, price, availableSlot, id }) => (
             <div
               key={id}
-              className="bg-white rounded-lg shadow-lg overflow-hidden border border-gray-100 transform transition-transform duration-300 hover:scale-105"
+              className="bg-white rounded-lg shadow-lg overflow-hidden border border-gray-100 transform transition-transform duration-300 hover:scale-105 flex flex-col justify-between"
             >
               <div className="relative w-full h-40">
                 <Image
