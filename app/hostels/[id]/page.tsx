@@ -1,8 +1,4 @@
-"use server";
-
-import { ChevronLeft } from "lucide-react";
-import Image from "next/image";
-import Link from "next/link";
+import { HostelCard } from "@/components/HostelCard";
 
 interface Hostel {
   id: number;
@@ -43,9 +39,9 @@ async function fetchHostel(id: string): Promise<Hostel | null> {
 export default async function HostelPage({
   params,
 }: {
-  params: Promise<{ id: string }>
+  params: Promise<{ id: string }>;
 }) {
-  const id = (await params).id
+  const id = (await params).id;
   const hostel = await fetchHostel(id);
 
   if (!hostel) {
@@ -56,31 +52,14 @@ export default async function HostelPage({
 
   return (
     <div className="flex flex-col justify-center items-start gap-2 py-6 px-4 bg-gray-100">
-      <Link
-        href="/"
-        className="flex items-center text-green-500 mb-4 rounded-full bg-white p-2"
-      >
-        <ChevronLeft />
-      </Link>
-      <div className="max-w-2xl mx-auto p-6 bg-white shadow-lg rounded-lg">
-        <Image
-          src={hostel.imageUrl}
-          alt={hostel.name}
-          width={700}
-          height={400}
-          className="rounded-lg"
-        />
-        <h2 className="text-2xl font-bold text-center mt-4">{hostel.name}</h2>
-        <p className="text-gray-600 mt-2">{hostel.description}</p>
-        <p className="text-lg font-semibold mt-2">
-          Price: ₦{hostel.price.toLocaleString()} / year
-        </p>
-        <p className="text-lg mt-2">Available Slots: {hostel.availableSlots}</p>
-        <p className="text-lg mt-2">Contact: {hostel.contact}</p>
-        <button className="mt-4 w-full bg-green-600 text-white py-2 rounded-lg hover:bg-green-700">
-          Book Now
-        </button>
-      </div>
+      <HostelCard
+        name={hostel.name}
+        description={hostel.description}
+        price={hostel.price.toString()}
+        availableSlots={hostel.availableSlots}
+        contact={hostel.contact}
+        imageUrl={hostel.imageUrl}
+      />
     </div>
   );
 }
