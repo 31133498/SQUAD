@@ -1,5 +1,4 @@
 "use client";
-import { Campus } from "@/public";
 import { Menu, X } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
@@ -28,7 +27,7 @@ const Header = () => {
             </button>
             <Link href="/">
               <Image
-                src={Campus}
+                src="/Campus.png"
                 alt="Campus Nest logo"
                 width={192}
                 height={90}
