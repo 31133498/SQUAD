@@ -1,8 +1,9 @@
 "use server";
 
-import { ChevronLeft } from "lucide-react";
+import Rating from "@/components/Rating";
+// import { ChevronLeft } from "lucide-react";
 import Image from "next/image";
-import Link from "next/link";
+// import Link from "next/link";
 
 interface Hostel {
   id: number;
@@ -43,9 +44,9 @@ async function fetchHostel(id: string): Promise<Hostel | null> {
 export default async function HostelPage({
   params,
 }: {
-  params: Promise<{ id: string }>
+  params: Promise<{ id: string }>;
 }) {
-  const id = (await params).id
+  const id = (await params).id;
   const hostel = await fetchHostel(id);
 
   if (!hostel) {
@@ -56,31 +57,68 @@ export default async function HostelPage({
 
   return (
     <div className="flex flex-col justify-center items-start gap-2 py-6 px-4 bg-gray-100">
-      <Link
-        href="/"
-        className="flex items-center text-green-500 mb-4 rounded-full bg-white p-2"
-      >
-        <ChevronLeft />
-      </Link>
-      <div className="max-w-2xl mx-auto p-6 bg-white shadow-lg rounded-lg">
-        <Image
-          src={hostel.imageUrl}
-          alt={hostel.name}
-          width={700}
-          height={400}
-          className="rounded-lg"
-        />
-        <h2 className="text-2xl font-bold text-center mt-4">{hostel.name}</h2>
-        <p className="text-gray-600 mt-2">{hostel.description}</p>
-        <p className="text-lg font-semibold mt-2">
-          Price: ₦{hostel.price.toLocaleString()} / year
-        </p>
-        <p className="text-lg mt-2">Available Slots: {hostel.availableSlots}</p>
-        <p className="text-lg mt-2">Contact: {hostel.contact}</p>
-        <button className="mt-4 w-full bg-green-600 text-white py-2 rounded-lg hover:bg-green-700">
-          Book Now
-        </button>
-      </div>
+      <HostelCard
+        name={hostel.name}
+        description={hostel.description}
+        price={hostel.price.toString()}
+        availableSlots={hostel.availableSlots}
+        contact={hostel.contact}
+        imageUrl={hostel.imageUrl}
+      />
     </div>
+  );
+}
+
+interface HostelProps {
+  name: string;
+  description: string;
+  price: string;
+  availableSlots: number;
+  contact: string;
+  imageUrl: string;
+}
+
+export async function HostelCard({
+  name,
+  description,
+  price,
+  availableSlots,
+  contact,
+  imageUrl,
+}: HostelProps) {
+  return (
+    <>
+      <div className="mx-auto max-w-[800px] w-full bg-white rounded-lg shadow-lg overflow-hidden p-6 gap-4 flex flex-col">
+        <Image
+          src={imageUrl}
+          alt={name}
+          width={600}
+          height={300}
+          className="w-full h-64 object-cover rounded-lg"
+        />
+        <div className="flex flex-col gap-4">
+          <h2 className="text-2xl font-bold text-green-700">{name}</h2>
+          <p className="text-gray-600 mt-2">{description}</p>
+          <p className="mt-4 font-bold text-green-600">
+            Price:{" "}
+            <span className="text-gray-600 font-medium">{price} / year</span>
+          </p>
+          <p className="font-bold text-green-600">
+            Available Slots:{" "}
+            <span className="text-gray-600 font-medium">{availableSlots}</span>
+          </p>
+          <p className="font-bold text-green-600">
+            Contact:{" "}
+            <span className="text-gray-600 font-medium">{contact}</span>
+          </p>
+          <button className="mt-4 w-full bg-green-600 hover:bg-green-700 text-white py-2 rounded-lg cursor-pointer">
+            Book Now
+          </button>
+        </div>
+
+        {/* Rating Section */}
+      </div>
+      <Rating />
+    </>
   );
 }
