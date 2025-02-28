@@ -1,6 +1,7 @@
 "use client";
 import Hero from "@/components/Hero";
 import Hostels from "@/components/Hostels";
+import Popup from "@/components/Popup";
 import React, { useEffect, useState } from "react";
 
 interface dataType {
@@ -62,6 +63,7 @@ const Page = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <Hostels filteredItems={filteredItems} loading={loading} />
       </div>
+      <Popup />
     </main>
   );
 };

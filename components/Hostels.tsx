@@ -62,7 +62,7 @@ const Hostels = ({ filteredItems, loading }: filteredProps) => {
       ) : (
         <>
           {loading ? (
-            <li key="loading" className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 w-full gap-2 items-center col-span-full">
+            <li key="loading" className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 w-full gap-2 items-center col-span-full">
               {Array.from({ length: 8 }).map((_, index) => (
                 <div
                   key={index}

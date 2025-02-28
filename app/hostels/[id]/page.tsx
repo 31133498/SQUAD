@@ -58,7 +58,7 @@ export default async function HostelPage({
     <div className="flex flex-col justify-center items-start gap-2 py-6 px-4 bg-gray-100">
       <Link
         href="/"
-        className="flex items-center text-blue-500 mb-4 rounded-full bg-white p-2"
+        className="flex items-center text-green-500 mb-4 rounded-full bg-white p-2"
       >
         <ChevronLeft />
       </Link>
