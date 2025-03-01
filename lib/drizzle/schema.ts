@@ -10,7 +10,7 @@ export const users = pgTable('', {
     account_type: account_type().notNull(),
     institutionId: integer('institution_id'),
     phone: varchar('phone_number', { length: 20 }).notNull(),
-    propertyId: integer('property_id')
+    propertyId: integer('property_id').references(() => property.id)
 })
 
 export const buildings = pgTable('buildings', {
