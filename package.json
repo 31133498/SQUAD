@@ -6,7 +6,11 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "drizzle:migrate": "drizzle-kit migrate",
+    "drizzle:migrate-local": "drizzle-kit migrate --config=drizzle.config.local.ts",
+    "drizzle:generate": "drizzle-kit generate",
+    "drizzle:generate-local": "drizzle-kit generate --config=drizzle.config.local.ts"
   },
   "dependencies": {
     "lucide-react": "^0.477.0",
