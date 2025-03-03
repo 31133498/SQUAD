@@ -23,7 +23,7 @@ export const buildings = pgTable('buildings', {
     description: text('description').notNull(),
     price: numeric('price', { scale: 2 }).notNull(),
     image: text('image_url').notNull(),
-    images: json('images').$type<string[]>().default([])
+    images: json('images').$type<string[]>().default([]).notNull()
 })
 
 export const institution = pgTable('institution', {
