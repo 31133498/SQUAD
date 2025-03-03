@@ -1,4 +1,4 @@
-import { integer, json, numeric, pgEnum, pgTable, serial, text, varchar } from 'drizzle-orm/pg-core'
+import { index, integer, json, numeric, pgEnum, pgTable, serial, text, varchar } from 'drizzle-orm/pg-core'
 
 export const accountType = pgEnum('account_type', ['student', 'vendor', 'owner'])
 export const stayDuration = pgEnum('stay_duration', ['day', 'month', 'year'])
@@ -12,7 +12,9 @@ export const users = pgTable('users', {
     institutionId: integer('institution_id'),
     phone: varchar('phone_number', { length: 20 }).notNull(),
     propertyId: integer('property_id').references(() => property.id)
-})
+}, (table) => [
+    index("email_idx").on(table.email)
+])
 
 export const buildings = pgTable('buildings', {
     id: serial('id').primaryKey(),
@@ -20,7 +22,8 @@ export const buildings = pgTable('buildings', {
     name: text('name').notNull().unique(),
     description: text('description').notNull(),
     price: numeric('price', { scale: 2 }).notNull(),
-    images: json('images').$type<string[]>().default([]).notNull()
+    image: text('image_url').notNull(),
+    images: json('images').$type<string[]>().default([])
 })
 
 export const institution = pgTable('institution', {
