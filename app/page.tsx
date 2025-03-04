@@ -16,7 +16,7 @@ interface DataType {
 const Page = () => {
 	const [searchTerm, setSearchTerm] = useState("");
 	const [items, setItems] = useState<DataType[]>([]);
-	const [loading, setLoading] = useState(true);
+	// const [loading, setLoading] = useState(true);
 
 	useEffect(() => {
 		const fetchData = async () => {
@@ -86,7 +86,7 @@ const Page = () => {
 			} catch (error) {
 				console.error("Error fetching data:", error);
 			} finally {
-				setLoading(false);
+				// setLoading(false);
 			}
 		};
 
