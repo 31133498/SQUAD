@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
@@ -13,14 +13,17 @@
     "drizzle:generate-local": "drizzle-kit generate --config=drizzle.config.local.ts"
   },
   "dependencies": {
+    "cloudinary": "^2.5.1",
+    "drizzle-orm": "^0.40.0",
+    "jose": "^6.0.8",
     "lucide-react": "^0.477.0",
     "next": "15.2.0",
+    "postgres": "^3.4.5",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "drizzle-orm": "^0.40.0",
-    "postgres": "^3.4.5",
-    "cloudinary": "^2.5.1",
     "squadco-js": "^1.0.0",
+    "stunk": "^2.0.0",
+    "swr": "^2.3.2",
     "zod": "^3.24.2"
   },
   "devDependencies": {
@@ -29,10 +32,12 @@
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "client-only": "^0.0.1",
     "dotenv": "^16.4.7",
     "drizzle-kit": "^0.30.5",
     "eslint": "^9.21.0",
     "eslint-config-next": "15.2.0",
+    "server-only": "^0.0.1",
     "tailwindcss": "^4.0.9",
     "typescript": "^5.7.3"
   }

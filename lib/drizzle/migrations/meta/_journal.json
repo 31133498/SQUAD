@@ -8,6 +8,20 @@
       "when": 1740790180725,
       "tag": "0000_yellow_ben_grimm",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1741038613957,
+      "tag": "0001_easy_killraven",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1741042465138,
+      "tag": "0002_empty_mikhail_rasputin",
+      "breakpoints": true
     }
   ]
 }
