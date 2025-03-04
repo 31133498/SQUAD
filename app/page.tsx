@@ -1,6 +1,6 @@
 "use client";
 import Hero from "@/components/Hero";
-import Hostels from "@/components/Hostels";
+import Hostel from "@/components/Hostel";
 import Popup from "@/components/Popup";
 import React, { useEffect, useState } from "react";
 
@@ -96,10 +96,26 @@ const Page = () => {
 	const filteredItems = items.filter((item) => item.title.toLowerCase().includes(searchTerm.toLowerCase()));
 
 	return (
-		<main className="">
+		<main>
 			<Hero searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
 			<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-				<Hostels filteredItems={filteredItems} loading={loading} />
+				<div className="grid grid-cols-[repeat(auto-fit, minmax(300px, 1fr))] gap-6">
+					{filteredItems.map((val) => (
+						<Hostel key={val.id} {...val} />
+					))}
+				</div>
+
+				{/* <>
+					{loading ? (
+						<li key="loading" className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 w-full gap-2 items-center col-span-full">
+							{Array.from({ length: 8 }).map((_, index) => (
+								<div key={index} className="bg-gray-200 animate-pulse h-60 w-full rounded-lg"></div>
+							))}
+						</li>
+					) : (
+						<li className="col-span-full text-center text-gray-500">No results found</li>
+					)}
+				</> */}
 			</div>
 			<Popup />
 		</main>
